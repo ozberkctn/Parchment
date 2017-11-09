@@ -143,7 +143,9 @@ open class EMPageViewController: UIViewController, UIScrollViewDelegate {
     /// - important: Properties should be set with caution to prevent unexpected behavior.
     open private(set) lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
         scrollView.isPagingEnabled = true
         scrollView.scrollsToTop = false
         scrollView.autoresizingMask = [.flexibleTopMargin, .flexibleRightMargin, .flexibleBottomMargin, .flexibleLeftMargin]
